@@ -1,3 +1,3 @@
 # Enter your API key
-key = "greywolf16"
-gkey = "janecc.gan@gmail.com"
+key = "copperheron71"
+gkey = "spo.kanika@gmail.com"
