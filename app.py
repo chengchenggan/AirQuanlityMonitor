@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
-import scrape_craigslist
 
 app = Flask(__name__)
 
@@ -12,8 +11,8 @@ mongo = PyMongo(app)
 def index():
     return render_template('index.html')
 
-@app.route("/visual1")
-def visual1():
+@app.route("/ca_avg")
+def ca_avg():
 # incomplete for now...
 
 if __name__ == "__main__":
