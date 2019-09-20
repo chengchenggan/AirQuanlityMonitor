@@ -1,25 +1,5 @@
 // Creating map object
-var map = L.map("map", {
-  center: [38.7749, -119.4194],
-  zoom: 6
-});
 
-// Adding tile layer
-L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.streets",
-  accessToken: API_KEY
-}).addTo(map);
-
-// If data.beta.nyc is down comment out this link
-// var link = "http://data.beta.nyc//dataset/0ff93d2d-90ba-457c-9f7e-39e47bf2ac5f/resource/" +
-// "35dd04fb-81b3-479b-a074-a27a37888ce7/download/d085e2f8d0b54d4590b1e7d1f35594c1pediacitiesnycneighborhoods.geojson";
-
-// Uncomment this link local geojson for when data.beta.nyc is down
-var link = "static/data/ca_avg_month.json";
-
-// Function that will determine the color of a neighborhood based on the borough it belongs to
 function chooseColor(aqi) {
   switch (aqi) {
   case (aqi < 50):
@@ -39,8 +19,34 @@ function chooseColor(aqi) {
   }
 }
 
-// Grabbing our GeoJSON data..
-d3.json(link, function(data) {
+function init(){
+console.log('testinggg');
+var map = L.map("map", {
+  center: [38.7749, -119.4194],
+  zoom: 6
+});
+
+// Adding tile layer
+L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.streets",
+  accessToken: API_KEY
+}).addTo(map);
+
+}
+function optionChanged(value){
+
+  buildmethod(value);
+ 
+}
+function buildmethod(value1)
+{
+   // Grabbing our GeoJSON data..
+console.log('test2');
+d3.json(`/months/${value1}`, function(data) {
+  console.log(data)
+ 
   // Creating a geoJSON layer with the retrieved data
   L.geoJson(data, {
     // Style each feature (in this case a neighborhood)
@@ -82,3 +88,5 @@ d3.json(link, function(data) {
     }
   }).addTo(map);
 });
+}
+init();

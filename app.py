@@ -22,27 +22,15 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
 
 
-@app.route("/2014-03-01")
-def date_data():
-
-    # Create a dictionary entry for each row of metadata information
-    results = mongo.db.ca_avg.find({"date_local":"2016-03-01"},{'_id' : 0})
-    # print(results)
-    query_data = list(results)
-    for data in query_data:
-        print(data)
-        print(type(data))
-    #     sample_metadata["date_local"] = result[0]
-    #     sample_metadata["aqi"] = result[1]
-    #     sample_metadata["county_code"] = result[2]
-        
-
-    print(query_data)
+@app.route('/months/<month>')
+def month_data(month):
+    results = mongo.db.ca_avg_plswork.find({"properties.month": 1},{'_id' : 0})
+    query_data = list(results)    
     return jsonify(query_data)
 
 # from .mongoflask import MongoJSONEncoder, ObjectIdConverter
