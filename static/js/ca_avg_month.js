@@ -1,5 +1,5 @@
 function chooseColor(aqi) {
-  switch (aqi) {
+  switch (true) {
   case (aqi < 50):
     return "green";
   case (aqi < 100):
