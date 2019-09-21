@@ -36,7 +36,11 @@ def aqiview2():
 def aqiview3():
     return render_template("AQIView3.html")
 
-
+@app.route("/aqiview3/data")
+def aqiview3_data():
+    results = mongo.db.county_lines.find({}, {'county': 1, 'month': 1, 'aqi': 1, '_id': 0})
+    data = list(results)
+    return jsonify(data)
 
 @app.route('/aqiview2/months/<month>')
 def month_data(month):

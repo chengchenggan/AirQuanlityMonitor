@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@4.13.0/build/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/taucharts@2/dist/taucharts.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/taucharts@2/dist/taucharts.min.css">
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -52,9 +55,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <button type="button" onclick="window.location.href = '/';" class="btn btn-info">HOME</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview1')}}';" class="btn btn-info">AQI View 1</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview2')}}';" class="btn btn-info">AQI View 2</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview3')}}';"class="btn btn-info">AQI View 3</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview1')}}';" class="btn btn-info">Monthly County AQI Map</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview2')}}';" class="btn btn-info">5 Year Average Heatmap</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview3')}}';"class="btn btn-info">Monthly County AQI Linegraph</button>
         
       </ul>
       
@@ -63,8 +66,8 @@
   </div>
 </nav>
 
-
-          
+<div id="scatter"></div>
+<script type="text/javascript" src="static/js/county_lines.js"></script>
         </div>      
       </div>
     </div>
