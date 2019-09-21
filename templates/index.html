@@ -1,50 +1,132 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>California Air Quality</title>
+<html lang="en">
+<head>
+  <title>California 5 Year AQI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #5c5c9b;
+    }
+    body {
+      background-color: #5c5c9b;
+     
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #e6e6fa;
+      padding: 15px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
 
-    <!-- Leaflet JS & CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-    crossorigin=""></script>
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body>
 
-    <!-- d3 JavaScript -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <button type="button" onclick="window.location.href = '/';" class="btn btn-info">HOME</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview1')}}';" class="btn btn-info">AQI View 1</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview2')}}';" class="btn btn-info">AQI View 2</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview3')}}';"class="btn btn-info">AQI View 3</button>
+        
+      </ul>
+      
+      
+    </div>
+  </div>
+</nav>
 
-    <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
 
-  </head>
-  <body>
-    <!-- <div class> -->
-      <h5>SELECT Month:</h5>
-      <form>
-      <select id="selDataset" onchange="optionChanged(this.value)">
-      <option value = 1>January</option>
-      <option value = 2>February</option>
-      <option value = 3>March</option>
-      <option value = 4>April</option>
-      <option value = 5>May</option>
-      <option value = 6>June</option>
-      <option value = 7>July</option>
-      <option value = 8>August</option>
-      <option value = 9>September</option>
-      <option value = 10>October</option>
-      <option value = 11>November</option>
-      <option value = 12>December</option>
-      </select>
-      </form>
-    <!-- </div> -->
-    <!-- map div -->
-    <div id="map"></div>
-    <!-- API key -->
-    <script type="text/javascript" src="static/js/config.js"></script>
-      <!-- JS  -->
-    <script type="text/javascript" src="static/js/ca_avg_month.js"></script>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Sun-in-the-sky.jpg" alt="Image">
+        <div class="carousel-caption">
+          <h3>INHALE</h3>
+          
+        </div>      
+      </div>
 
-  </body>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/The_Burning_Sky.JPG" alt="Image">
+        <div class="carousel-caption">
+          <h3>EXHALE</h3>
+          
+        </div>      
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+<div class="container text-center">    
+  <h3>Long ago, the United States EPA collected and shared AQI data with the world. Then, everything changed when the Trump Administration attacked. Only the AirBenders, masters of data analytics, could stop them, but when the world needed them most, the Trump Administration cut $2 billion or 31% of the EPA’s budget. Six months passed and the AirBenders learned web scraping and although their AirBending skills are great, there is a lot of data to collect before they’re ready to report like the EPA. But I believe the AirBenders can save the world. </h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="https://ecolink.com/wp-content/uploads/2017/12/Low-voc.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <p>Air Pollutants Measured in the AQI</p>
+    </div>
+    <div class="col-sm-4"> 
+      <img src="http://www.sparetheair.com/assets/aqi/Ozone2017.png" class="img-responsive" style="width:100%" alt="Image">
+      <p>Air Quality Index (AQI)</p>    
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+          <button type="button" class="btn btn-info btn-md">The AirBenders: Kanika, Jane, & Komal</button>
+       <p></p>
+      </div>
+      <div class="well">
+          <button type="button" onclick="window.location.href = 'http://www.sparetheair.org/connect-with-us/sign-up-for-alerts';" class="btn btn-info btn-md">Text "START" to 817-57 for Spare the Air Alerts</button>
+       <p></p>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<footer class="container-fluid text-center">
+  <p></p>
+</footer>
+
+</body>
 </html>

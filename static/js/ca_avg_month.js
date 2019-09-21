@@ -44,7 +44,7 @@ function buildmethod(value1)
 {
    // Grabbing our GeoJSON data..
 console.log('test2');
-d3.json(`/months/${value1}`, function(data) {
+d3.json(`/aqiview2/months/${value1}`, function(data) {
   console.log(data)
  
   // Creating a geoJSON layer with the retrieved data

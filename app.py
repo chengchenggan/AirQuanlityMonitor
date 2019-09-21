@@ -24,14 +24,29 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html")
 
+@app.route("/aqiview1")
+def aqiview1():
+    return render_template("AQIView1.html")
+
+@app.route("/aqiview2")
+def aqiview2():
+    return render_template("AQIView2.html")
+
+@app.route("/aqiview3")
+def aqiview3():
+    return render_template("AQIView3.html")
 
 
 
-@app.route('/months/<month>')
+@app.route('/aqiview2/months/<month>')
 def month_data(month):
-    results = mongo.db.ca_avg_plswork.find({"properties.month": 1},{'_id' : 0})
-    query_data = list(results)    
+    month = int(month)
+    results = mongo.db.ca_avg_plswork.find({"properties.month": month},{'_id' : 0})
+    print(month)
+    query_data = list(results)
+    print(jsonify(query_data))
     return jsonify(query_data)
+    
 
 # from .mongoflask import MongoJSONEncoder, ObjectIdConverter
 
