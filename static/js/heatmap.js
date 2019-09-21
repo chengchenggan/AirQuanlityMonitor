@@ -10,7 +10,7 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(myMap);
 
-var url = "../Resources/ca_by_site_number.json";
+var url = "https://api.myjson.com/bins/hs7f1";
 
 d3.json(url, function(response) {
 
