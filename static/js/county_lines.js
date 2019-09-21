@@ -37,10 +37,11 @@ function init(){
             y: 'aqi',
             color: 'county',
             size: 'aqi',
-            // settings: {
-            //     xDensityPadding: 1,
-            //     yDensityPadding: 1000
-            // }
+            settings: {
+                //  xDensityPadding: 1,
+                // yDensityPadding: 1000,
+                fitModel: 'fit-width'
+            }
         });
         chart.renderTo('#scatter');
         });

@@ -55,9 +55,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <button type="button" onclick="window.location.href = '/';" class="btn btn-info">HOME</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview1')}}';" class="btn btn-info">Monthly County AQI Map</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview2')}}';" class="btn btn-info">5 Year Average Heatmap</button>
-        <button type="button" onclick="window.location.href = '{{url_for('aqiview3')}}';"class="btn btn-info">Monthly County AQI Linegraph</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview1')}}';" class="btn btn-info">AQI View 1</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview2')}}';" class="btn btn-info">AQI View 2</button>
+        <button type="button" onclick="window.location.href = '{{url_for('aqiview3')}}';"class="btn btn-info">AQI View 3</button>
         
       </ul>
       
@@ -68,6 +68,8 @@
 
 <div id="scatter"></div>
 <script type="text/javascript" src="static/js/county_lines.js"></script>
+<script type="stylesheet" href="static/js/style_scatter.js"></script>
+
         </div>      
       </div>
     </div>
