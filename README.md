@@ -17,7 +17,7 @@ This is California last 5years avg Air Quanlity Index (AQI) by County Heatmap.
 
 Use Flask to get data stored in Mongodb. Use Java Script to create map. The color reflects AQI of the selected month.
 
-  ![heatmap](static/images/view2-avg_Aug_aqi.png)
+  ![heatmap](static/images/view2-5year_avg_Aug_aqi.png)
 
 ## View 3 - New library - Taucharts
 
